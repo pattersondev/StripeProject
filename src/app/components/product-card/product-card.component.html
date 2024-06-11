@@ -1,0 +1,16 @@
+<div class="products">
+    @for (product of availableProducts; track product) {
+    <mat-card class="product-card">
+        <mat-card-content>
+            <img mat-card-image src="{{product.imageUrl}}" alt="{{product.name}}">
+        </mat-card-content>
+        <mat-card-footer>
+            <p>{{product.name}}</p>
+            <p>{{product.price}}</p>
+            <button mat-icon-button>
+                <mat-icon>add_shopping_cart</mat-icon>
+            </button>
+        </mat-card-footer>
+    </mat-card>
+    }
+</div>
