@@ -4,6 +4,12 @@
     align-items: center;
 }
 
+.wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+}
+
 .toolbar-text {
     display: flex;
     justify-content: center;
@@ -23,4 +29,8 @@
     margin-right: 1rem;
     width: 33%;
     gap: 1rem;
+}
+
+.icon-color {
+    color: white;
 }
