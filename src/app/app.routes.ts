@@ -3,6 +3,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
 import { CheckoutResultComponent } from './components/checkout-result/checkout-result.component';
+import { CartViewComponent } from './components/cart-view/cart-view.component';
 
 export const routes: Routes = [{
     path: '',
@@ -21,7 +22,11 @@ export const routes: Routes = [{
             component: ProductViewComponent
         },
         {
-            path: 'checkout/result',
+            path: 'cart-view',
+            component: CartViewComponent
+        },
+        {
+            path: 'checkout/result/:id',
             component: CheckoutResultComponent
         }
     ]

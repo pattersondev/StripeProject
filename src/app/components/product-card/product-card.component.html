@@ -2,7 +2,9 @@
     @for (product of availableProducts; track product) {
     <mat-card class="product-card">
         <mat-card-content>
-            <img mat-card-image src="{{product.imageUrl}}" alt="{{product.name}}" width="400px" height="350px">
+            <div class="img-wrapper">
+                <img mat-card-image src="{{product.imageUrl}}" alt="{{product.name}}" width="375px" height="375px">
+            </div>
         </mat-card-content>
         <mat-card-footer>
             <div class="product-name">
@@ -10,8 +12,8 @@
             </div>
             <div class="action-button">
                 <p>${{product.price}}</p>
-                <button mat-icon-button (click)="redirectToStripeCheckout(product.priceId)" matTooltip="Buy Now">
-                    <mat-icon>shopping_cart_checkout</mat-icon>
+                <button mat-icon-button (click)="addToCart(product)" matTooltip="Add to cart">
+                    <mat-icon>shopping_cart</mat-icon>
                 </button>
             </div>
         </mat-card-footer>

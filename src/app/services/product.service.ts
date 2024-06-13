@@ -5,11 +5,20 @@ import { Observable } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
+    cartData: Product[] = [];
     private endpoint = 'http://localhost:3000/api/v1/products';
 
     constructor(private http: HttpClient) { }
 
     getProducts(): Observable<Product[]> {
         return this.http.get<Product[]>(this.endpoint); // Specify the type of the response as Product[]
+    }
+
+    setCartData(currentlyInCart: Product[]) {
+        this.cartData = [...currentlyInCart];
+    }
+
+    getCartData(): Product[] {
+        return this.cartData;
     }
 }

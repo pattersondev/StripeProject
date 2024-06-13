@@ -15,7 +15,7 @@ export class CheckoutComponent {
 
   }
 
-  async redirectToStripeCheckout() {
-    await this.stripeService.redirectToCheckout(environment.priceId);
-  }
+  // async redirectToStripeCheckout() {
+  //   await this.stripeService.redirectToCheckout(environment.priceId);
+  // }
 }

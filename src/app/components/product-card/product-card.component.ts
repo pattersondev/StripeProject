@@ -16,6 +16,7 @@ import { StripeService } from '../../services/stripe.service';
 })
 export class ProductCardComponent implements OnInit {
   availableProducts: Array<Product> = [];
+  currentlyInCart: Array<Product> = [];
 
   constructor(private productService: ProductService, private stripeService: StripeService) { }
 
@@ -26,8 +27,13 @@ export class ProductCardComponent implements OnInit {
     });
   }
 
-  async redirectToStripeCheckout(priceId: string) {
-    console.log(priceId);
-    await this.stripeService.redirectToCheckout(priceId);
+  // async redirectToStripeCheckout(priceId: string) {
+  //   console.log(priceId);
+  //   await this.stripeService.redirectToCheckout(priceId);
+  // }
+
+  addToCart(product: Product) {
+    this.currentlyInCart.push(product);
+    this.productService.setCartData(this.currentlyInCart);
   }
 }

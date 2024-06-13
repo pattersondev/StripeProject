@@ -15,7 +15,7 @@ export class StripeService {
         return (window as any).Stripe(environment.stripeKey)
     }
 
-    async redirectToCheckout(priceId: string): Promise<void> {
+    async redirectToCheckout(priceId: String[]): Promise<void> {
         const stripe = await this.stripePromise;
         console.log(`${environment.apiUrl}/api/create-checkout-session`);
         const response = await fetch(`${environment.apiUrl}/api/create-checkout-session`, {
@@ -37,5 +37,22 @@ export class StripeService {
         if (result.error) {
             console.error(result.error.message);
         }
+    }
+
+    async getLineItems(sessionId: string): Promise<any> {
+        const stripe = await this.stripePromise;
+        const response = await fetch(`${environment.apiUrl}/api/get-line-items/${sessionId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then((res) => {
+            return res;
+        }).then((data) => {
+            return data;
+        });
+
+        return response;
+        //console.log(lineItems);
     }
 }
