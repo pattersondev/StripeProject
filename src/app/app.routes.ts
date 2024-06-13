@@ -19,6 +19,10 @@ export const routes: Routes = [{
         {
             path: 'checkout/result',
             component: CheckoutResultComponent
+        },
+        {
+            path: '**',
+            component: HomeComponent,
         }
     ]
 }];
