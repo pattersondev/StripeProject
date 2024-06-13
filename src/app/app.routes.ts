@@ -7,6 +7,10 @@ import { CheckoutResultComponent } from './components/checkout-result/checkout-r
 export const routes: Routes = [{
     path: '',
     component: HomeComponent,
+    pathMatch: 'full', // ensures that only empty path is matched
+},
+{
+    path: '',
     children: [
         {
             path: 'checkout',
@@ -19,10 +23,11 @@ export const routes: Routes = [{
         {
             path: 'checkout/result',
             component: CheckoutResultComponent
-        },
-        {
-            path: '**',
-            component: HomeComponent,
         }
     ]
-}];
+},
+{
+    path: '**',
+    component: HomeComponent,
+}
+];
