@@ -21,4 +21,8 @@ export class ProductService {
     getCartData(): Product[] {
         return this.cartData;
     }
+
+    removeFromCart(index: number) {
+        this.cartData.splice(index, 1);
+    }
 }

@@ -27,7 +27,6 @@ export class CartViewComponent implements OnInit {
 
   ngOnInit() {
     this.cartDataSource = new MatTableDataSource(this.productService.getCartData());
-    console.log(this.cartDataSource);
     this.disableCheckout = this.cartDataSource.data.length === 0;
   }
 
@@ -35,4 +34,9 @@ export class CartViewComponent implements OnInit {
     await this.stripeService.redirectToCheckout(this.cartDataSource.data.map(product => product.priceId));
   }
 
+  onDelete(index: number) {
+    this.productService.removeFromCart(index);
+    this.cartDataSource = new MatTableDataSource(this.productService.getCartData());
+    this.disableCheckout = this.cartDataSource.data.length === 0;
+  }
 }
