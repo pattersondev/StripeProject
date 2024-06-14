@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
 @Injectable({ providedIn: 'root' })
 export class ProductService {
     cartData: Product[] = [];
-    private endpoint = 'http://localhost:3000/api/v1/products';
+    private endpoint = 'https://boiling-sea-08841-49d3e82f32ee.herokuapp.com/api/v1/products';
 
     constructor(private http: HttpClient) { }
 
