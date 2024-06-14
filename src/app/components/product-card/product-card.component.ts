@@ -6,6 +6,7 @@ import { Product } from '../../types/Product.type';
 import { ProductService } from '../../services/product.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product-card',
@@ -18,7 +19,7 @@ export class ProductCardComponent implements OnInit {
   availableProducts: Array<Product> = [];
   currentlyInCart: Array<Product> = [];
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private productService: ProductService, private router: Router, private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(res => {
@@ -34,5 +35,6 @@ export class ProductCardComponent implements OnInit {
   addToCart(product: Product) {
     this.currentlyInCart.push(product);
     this.productService.setCartData(this.currentlyInCart);
+    this.snackbar.open(`Added ${product.name} To Cart`, 'Close', { duration: 2000 });
   }
 }

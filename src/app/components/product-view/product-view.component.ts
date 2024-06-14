@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../types/Product.type';
 import { MatCardModule } from '@angular/material/card';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product-view',
@@ -19,7 +20,7 @@ export class ProductViewComponent {
   product: Product = {} as Product;
   currentlyInCart: Array<Product> = [];
 
-  constructor(private route: ActivatedRoute, private productService: ProductService) { }
+  constructor(private route: ActivatedRoute, private productService: ProductService, private snackbar: MatSnackBar) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -34,5 +35,6 @@ export class ProductViewComponent {
   addToCart(product: Product) {
     this.currentlyInCart.push(product);
     this.productService.setCartData(this.currentlyInCart);
+    this.snackbar.open(`Added ${product.name} To Cart`, 'Close', { duration: 2000 });
   }
 }
