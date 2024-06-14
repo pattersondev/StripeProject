@@ -1,1 +1,15 @@
-<p>product-view works!</p>
+<app-banner></app-banner>
+<app-navbar></app-navbar>
+
+<div class="wrapper">
+    <div class="product-image">
+        <img src="{{product.imageUrl}}" height="750px" width="800px">
+    </div>
+    <div class="product-details">
+        <h3> Cozy Threads</h3>
+        <h1>{{product.name}}</h1>
+        <h2>${{product.price}}</h2>
+        <p>{{product.description}}</p>
+        <button mat-raised-button color="primary" (click)="addToCart(product)" class="add-button">Add to Cart</button>
+    </div>
+</div>

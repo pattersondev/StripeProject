@@ -31,6 +31,7 @@ export class CartViewComponent implements OnInit {
   }
 
   async redirectToStripeCheckout() {
+    console.log(this.cartDataSource.data);
     await this.stripeService.redirectToCheckout(this.cartDataSource.data.map(product => product.priceId));
   }
 

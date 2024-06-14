@@ -14,6 +14,14 @@ export class ProductService {
         return this.http.get<Product[]>(this.endpoint); // Specify the type of the response as Product[]
     }
 
+    getProductById(id: string): Observable<Product> {
+        return this.http.get<Product>(`${this.endpoint}/${id}`);
+    }
+
+    getProductByName(name: string): Observable<any> {
+        return this.http.get<any>(`${this.endpoint}/name/${name}`);
+    }
+
     setCartData(currentlyInCart: Product[]) {
         this.cartData = [...currentlyInCart];
     }

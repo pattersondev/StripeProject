@@ -1,0 +1,27 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.product-image {
+    width: 50%;
+    height: 50%;
+    padding-top: 2rem;
+}
+
+.product-details {
+    width: 40%;
+    padding-top: 2rem;
+    flex-direction: column;
+    display: flex;
+}
+
+.mat-mdc-raised-button:not(:disabled) {
+    background-color: #292726;
+    color: white;
+}
+
+.add-button:hover {
+    cursor: pointer;
+}

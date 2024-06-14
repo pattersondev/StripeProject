@@ -21,13 +21,24 @@
 
 .product-name {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    margin-top: 1rem;
+    align-items: center;
+    text-align: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .img-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.mat-mdc-card.mdc-card:hover {
+    box-shadow: 8px 8px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+.mat-mdc-card-content:hover {
+    cursor: pointer;
 }

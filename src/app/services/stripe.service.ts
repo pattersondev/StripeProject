@@ -9,6 +9,7 @@ export class StripeService {
 
     constructor() {
         this.stripePromise = this.loadStripe();
+        console.log(this.stripePromise);
     }
 
     private loadStripe(): Promise<Stripe> {
@@ -17,7 +18,6 @@ export class StripeService {
 
     async redirectToCheckout(priceId: String[]): Promise<void> {
         const stripe = await this.stripePromise;
-        console.log(`${environment.apiUrl}/api/create-checkout-session`);
         const response = await fetch(`${environment.apiUrl}/api/create-checkout-session`, {
             method: 'POST',
             headers: {
@@ -46,13 +46,8 @@ export class StripeService {
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then((res) => {
-            return res;
-        }).then((data) => {
-            return data;
         });
 
-        return response;
-        //console.log(lineItems);
+        return response.json();
     }
 }

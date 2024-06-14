@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Product } from '../../types/Product.type';
 import { ProductService } from '../../services/product.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { StripeService } from '../../services/stripe.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-card',
@@ -18,19 +18,18 @@ export class ProductCardComponent implements OnInit {
   availableProducts: Array<Product> = [];
   currentlyInCart: Array<Product> = [];
 
-  constructor(private productService: ProductService, private stripeService: StripeService) { }
+  constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(res => {
       this.availableProducts = res;
-      console.log(this.availableProducts);
     });
+    this.currentlyInCart = this.productService.getCartData();
   }
 
-  // async redirectToStripeCheckout(priceId: string) {
-  //   console.log(priceId);
-  //   await this.stripeService.redirectToCheckout(priceId);
-  // }
+  onCardClick(productId: number) {
+    this.router.navigate(['products', productId]);
+  }
 
   addToCart(product: Product) {
     this.currentlyInCart.push(product);
