@@ -9,7 +9,6 @@ export class StripeService {
 
     constructor() {
         this.stripePromise = this.loadStripe();
-        console.log(this.stripePromise);
     }
 
     private loadStripe(): Promise<Stripe> {

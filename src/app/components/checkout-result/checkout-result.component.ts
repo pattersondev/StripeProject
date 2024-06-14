@@ -39,10 +39,8 @@ export class CheckoutResultComponent implements OnInit {
   getProducts(productNames: string[]): void {
     for (let i = 0; i < productNames.length; i++) {
       this.productService.getProductByName(productNames[i]).subscribe(res => {
-        console.log(res);
         this.products.push(res[0]);
         this.orderDataSource = new MatTableDataSource(this.products);
-        console.log(this.orderDataSource);
       });
     }
   }
